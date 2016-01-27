@@ -92,3 +92,4 @@ backup:
   message: update hexo
   repository: 
     github: https://github.com/samstar/blog.git,master
+    gitcafe: https://gitcafe.com/samstar/blog.git,master
