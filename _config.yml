@@ -90,5 +90,4 @@ backup:
   type: git
   theme: jacman,landscape,next
   message: update hexo
-  repository:
-    github: https://github.com/samstar/blog.git,master
+  repository: https://github.com/samstar/blog.git,master
