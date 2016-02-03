@@ -5,12 +5,17 @@ category: 博客
 ---
 
 ## 浏览器端渲染模板流程
-    1、在浏览器端引入模板引擎（本文以doT为例） 
-           <script src="doT.js"></script>
-    2、获取数据，使用模板引擎生成html
-           1) 通过ajax或其他方式获取JSON数据data
-           2) 模板引擎渲染语法生成html
-    3、将html插入文档需要位置
+
+1、在浏览器端引入模板引擎（本文以doT为例） 
+
+　　`<script src="doT.js"></script>`
+
+2、获取数据，使用模板引擎生成html
+
+　　1) 通过ajax或其他方式获取JSON数据data
+　　2) 模板引擎渲染语法生成html
+
+3、将html插入文档需要位置
 
 ### DOM结构
 
