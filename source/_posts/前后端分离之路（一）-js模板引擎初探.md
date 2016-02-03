@@ -26,14 +26,16 @@ category: 博客
             <div class="nav"></div>
             <div class="body"></div>
             <script type="text/template" id="nav">
-        //遍历对象，key->value  
-        //模板的it是调用渲染函数时传入的data参数生成的对象  
+<!--
+        遍历对象，key->value  
+        模板的it是调用渲染函数时传入的data参数生成的对象  
+-->
                 {{ for(var key in it){ }}
                     <li data-nav = "{{=key}}">{{=it[key]}}</li>
                 {{ } }
             </script>
             <script type="text/template" id="body">
-        //遍历数组，index->value
+<!--    遍历数组，index->value   -->
                 {{~it :value:index}}
                     <div data-body-id = "{{=index}}">{{=value}}</div>
                 {{~}}
