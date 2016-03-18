@@ -2,6 +2,7 @@
 menu:
   Home: /
   Archives: /archives
+  demos: /demos
   About: /about
   book: /book
 ## you can create `tags` and `categories` folders in `../source`.
