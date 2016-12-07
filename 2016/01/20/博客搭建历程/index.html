@@ -1,0 +1,550 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>献给github和hexo | zuimao&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="醉倒的猫">
+    
+
+    
+    <meta name="description" content="搭建历程一、github创建主页和项目页
+一直想搭建一个自己的博客，这几天有时间，就折腾了一下。方案采用的是github+hexo，之前在github上建了一个较挫的主页，直接删掉换成博客的话有些舍不得，于是决定主页保留，博客页面创建在gh-pages分支，作为项目页面。
+具体方法如下：
+
+github创建user pages 和project pages : User Pages创建：新建仓库，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="献给github和hexo">
+<meta property="og:url" content="http://www.easyzhidao.com/blog/2016/01/20/博客搭建历程/index.html">
+<meta property="og:site_name" content="zuimao's blog">
+<meta property="og:description" content="搭建历程一、github创建主页和项目页
+一直想搭建一个自己的博客，这几天有时间，就折腾了一下。方案采用的是github+hexo，之前在github上建了一个较挫的主页，直接删掉换成博客的话有些舍不得，于是决定主页保留，博客页面创建在gh-pages分支，作为项目页面。
+具体方法如下：
+
+github创建user pages 和project pages : User Pages创建：新建仓库，">
+<meta property="og:updated_time" content="2016-12-07T08:54:47.577Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="献给github和hexo">
+<meta name="twitter:description" content="搭建历程一、github创建主页和项目页
+一直想搭建一个自己的博客，这几天有时间，就折腾了一下。方案采用的是github+hexo，之前在github上建了一个较挫的主页，直接删掉换成博客的话有些舍不得，于是决定主页保留，博客页面创建在gh-pages分支，作为项目页面。
+具体方法如下：
+
+github创建user pages 和project pages : User Pages创建：新建仓库，">
+
+    
+    <link rel="alternative" href="blog/atom.xml" title="zuimao&#39;s blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/blog/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.png" alt="zuimao&#39;s blog" title="zuimao&#39;s blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="zuimao&#39;s blog">zuimao&#39;s blog</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/blog/">Home</a></li>
+					
+						<li><a href="/blog/archives">Archives</a></li>
+					
+						<li><a href="/blog/demos">demos</a></li>
+					
+						<li><a href="/blog/about">About</a></li>
+					
+						<li><a href="/blog/book">book</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:www.easyzhidao.com/blog">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2016/01/20/博客搭建历程/" title="献给github和hexo" itemprop="url">献给github和hexo</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="醉倒的猫" target="_blank" itemprop="author">醉倒的猫</a>
+		
+  <p class="article-time">
+    <time datetime="2016-01-20T07:14:13.000Z" itemprop="datePublished"> Published 2016-01-20</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#搭建历程"><span class="toc-number">1.</span> <span class="toc-text">搭建历程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、github创建主页和项目页"><span class="toc-number">1.1.</span> <span class="toc-text">一、github创建主页和项目页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、安装心仪的主题"><span class="toc-number">1.2.</span> <span class="toc-text">二、安装心仪的主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、域名及dns配置"><span class="toc-number">1.3.</span> <span class="toc-text">三、域名及dns配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、添加多说评论"><span class="toc-number">1.4.</span> <span class="toc-text">四、添加多说评论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、添加谷歌sitemap"><span class="toc-number">1.5.</span> <span class="toc-text">五、添加谷歌sitemap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、备份以在不同环境下随时更新博客"><span class="toc-number">1.6.</span> <span class="toc-text">六、备份以在不同环境下随时更新博客</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#写在后面"><span class="toc-number">1.7.</span> <span class="toc-text">写在后面</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="搭建历程"><a href="#搭建历程" class="headerlink" title="搭建历程"></a>搭建历程</h2><h3 id="一、github创建主页和项目页"><a href="#一、github创建主页和项目页" class="headerlink" title="一、github创建主页和项目页"></a>一、github创建主页和项目页</h3><hr>
+<p>一直想搭建一个自己的博客，这几天有时间，就折腾了一下。方案采用的是<em>github+hexo</em>，之前在<em>github</em>上建了一个较挫的主页，直接删掉换成博客的话有些舍不得，于是决定主页保留，博客页面创建在<em>gh-pages</em>分支，作为项目页面。</p>
+<p></p><p style="color:#f15b82">具体方法如下：</p><p></p>
+<ol>
+<li>github创建user pages 和project pages : User Pages创建：新建仓库，名称为<code>xxxx.github.io</code>,进入该仓库，点击<code>Setting</code>按钮，找到<code>GitHub Pages</code>部分，生成页面（不做赘述，不会者google之~）。Project pages创建：新建仓库，命名随意，备用。</li>
+<li>安装Node.js。windows下建议使用<em>git bash</em>作为命令行工具。npm命令行运行<code>npm install -g hexo</code>。任意目录创建文件夹hexo，<em>git bash</em>进入该文件夹，执行命令<code>hexo init</code>，即安装好。<br>hexo命令:  <blockquote>
+<p>hexo g   　　    　　&nbsp;生成静态页面（generate）<br>hexo s    　　    　　&nbsp;启动server<br>hexo n    　　    　　&nbsp;新建文章（new）<br>hexo d    　　    　　&nbsp;发布（deployer）<br>hexo n page　       　新建页面</p>
+</blockquote>
+</li>
+<li>使用<code>hexo n &quot;filename&quot;</code> 创建文章。进入<em>source&gt;_posts</em>文件夹找到创建的文件，随便写点什么吧。运行<code>hexo s</code>，看到如下console:</li>
+</ol>
+<pre><code>Hexo is running at http://0.0.0.0:4000.
+
+打开浏览器，输入`localhost:4000`，文章出来了~~
+</code></pre><p><a href="http://samstar.github.io/blog" target="_blank" rel="external">点击这里看看</a></p>
+<h3 id="二、安装心仪的主题"><a href="#二、安装心仪的主题" class="headerlink" title="二、安装心仪的主题"></a>二、安装心仪的主题</h3><hr>
+<p>可以参考这个问题选一款自己喜欢的主题<a href="https://www.zhihu.com/question/24422335" target="_blank" rel="external">有哪些好看的 Hexo 主题？</a>—仅供参考(我用了jacman)。<br>选择好后，项目根目录下git bash执行命令<code>git clone https://github.com/wuchong/jacman.git themes/jacman</code>安装主题。打开根目录下_config.yml文件，找到主题theme,将默认主题修改为jacman。接下来只需要找到github上主题的API文档，例如<a href="https://github.com/wuchong/jacman" target="_blank" rel="external">https://github.com/wuchong/jacman</a>  进行个性化配置就好了。</p>
+<h3 id="三、域名及dns配置"><a href="#三、域名及dns配置" class="headerlink" title="三、域名及dns配置"></a>三、域名及dns配置</h3><hr>
+<p><em>域名</em> <a href="http://www.godaddy.com" target="_blank" rel="external">http://www.godaddy.com</a>   好用，便宜<br><em>DNS</em>  <a href="http://www.dnspod.cn" target="_blank" rel="external">http://www.dnspod.cn</a>      </p>
+<blockquote>
+<p>1、为域名设置DNS可以参考 <a href="https://support.dnspod.cn/Kb/showarticle/tsid/42" target="_blank" rel="external">https://support.dnspod.cn/Kb/showarticle/tsid/42</a><br>    2、在github上网站的主目录下，比如我的就是samstar.github.io这个仓库主目录下，新建文件CNAME,编辑内容为我的域名 easyzhidao.com<br>    3、域名解析直接去dnspod，登录》添加域名》添加记录</p>
+</blockquote>
+<h3 id="四、添加多说评论"><a href="#四、添加多说评论" class="headerlink" title="四、添加多说评论"></a>四、添加多说评论</h3><hr>
+<p>有些主题默认添加了多说评论功能，只需配置好即可。<br>我用的jacman主题就内置了多说评论。于是我只需要在jacman主题目录下修改_config.yml文件，找到Comment模块，在 <code>duoshuo_shortname</code>后面添加自己的多说账号名就可以了。比如在多说官网注册账号后进入后台管理页面后，地址是xxx.duoshuo.com/admin，这个xxx就是多说shortname。</p>
+<h3 id="五、添加谷歌sitemap"><a href="#五、添加谷歌sitemap" class="headerlink" title="五、添加谷歌sitemap"></a>五、添加谷歌sitemap</h3><p><a href="http://fionat.github.io/blog/2013/10/23/sitemap/" target="_blank" rel="external">http://fionat.github.io/blog/2013/10/23/sitemap/</a> </p>
+<p> 很详细，我照着这篇教程弄的，很快就能在google搜索到我的博客了。</p>
+<h3 id="六、备份以在不同环境下随时更新博客"><a href="#六、备份以在不同环境下随时更新博客" class="headerlink" title="六、备份以在不同环境下随时更新博客"></a>六、备份以在不同环境下随时更新博客</h3><hr>
+<p>如何在公司，在家，在任何地方随时编写博文呢？我采用的是一个比较直接的方式：将整个博客项目通过git进行托管。<br>我在发布博客的仓库，即<code>git@github.com:samstar/blog</code>仓库下新建了分支hexo，用来备份博客。<br>1、将hexo分支设置为默认分支。<br>2、在本地博客项目文件夹（我的是hexo）执行git init , git remote add origin git@github.com:samstar/blog。<br>3、git pull 、git push 将本地文件push到远程仓库(根目录下的.gitignore文件可以不管)。<code>注意 如果有clone其他主题的话，要把该主题下的.git文件删除掉</code>。<br>　　１）因为这时的主题文件夹是在版本控制中的，进入该文件夹，比如：<code>cd themes/jacman</code>，执行<code>git remote -v</code> 会发现该目录是与clone的仓库地址关联起来的。<br>　　２）如果在该目录下执行add 、commit的话，该目录会成为整个项目的submodule(git 库子模组,不懂可google之~)。<br>　　３）假如你在主题目录下commit，然后在项目根目录下commit，会发现github提交记录是这样的：<em>+Subproject commit d0227e21ca85915576ab862d6b78c2b075b94921</em>,别怕，根目录下执行命令<code>git rm --cached themes/jacman</code>即可删除之，然后Push代码，这个子项目就在git中被删除了（别问我怎么知道的~~）。</p>
+<p>4、在另外一台机器，建立一个文件夹，依次init、remote add、git clone git@github.com:samstar/blog 拉取博客项目文件（拉过来应是默认分支hexo），然后依次执行npm install hexo(每台机器第一次都要安装)、npm install(安装依赖)、npm install hexo-deployer-git(hexo插件)。<br>5、执行hexo s，打开本地调试页面<code>localhost:4000</code>看看是不是已经把整个博客项目迁移过来了~~<br>6、写博文，写好之后记得push + hexo d ~~</p>
+<h3 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a><span style="color:#e9ad1b">写在后面</span></h3><pre><code>之前一直使用笔记软件来记录工作生活中的点滴，随着笔记规模越来越庞大，也是越来越难以管理，刚好想试一下使用github pages，索性使用github来搭建个博客。
+
+折腾的过程是挺费劲的，但是个人觉得收获也是很大，尤其是不断的遇到问题，解决问题，这个过程是很享受滴~~~
+
+如果你也在尝试搭建自己的独立博客，想交流一些东西，或者遇到一些问题没有解决的，直接在评论区留言吧，一起解决问题~~
+</code></pre>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/blog/categories/博客/">博客</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/github-hexo搭建个人博客/">github+hexo搭建个人博客</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://www.easyzhidao.com/blog/blog/2016/01/20/博客搭建历程/" data-title="献给github和hexo | zuimao&#39;s blog" data-tsina="5772953574" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/blog/2016/02/02/前后端分离之路（一）-js模板引擎初探/" title="前后端分离之路（一） js模板引擎初探">
+  <strong>上一篇：</strong><br/>
+  <span>
+  前后端分离之路（一） js模板引擎初探</span>
+</a>
+</div>
+
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/01/20/博客搭建历程/" data-title="献给github和hexo" data-url="http://www.easyzhidao.com/blog/blog/2016/01/20/博客搭建历程/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#搭建历程"><span class="toc-number">1.</span> <span class="toc-text">搭建历程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、github创建主页和项目页"><span class="toc-number">1.1.</span> <span class="toc-text">一、github创建主页和项目页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、安装心仪的主题"><span class="toc-number">1.2.</span> <span class="toc-text">二、安装心仪的主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、域名及dns配置"><span class="toc-number">1.3.</span> <span class="toc-text">三、域名及dns配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、添加多说评论"><span class="toc-number">1.4.</span> <span class="toc-text">四、添加多说评论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、添加谷歌sitemap"><span class="toc-number">1.5.</span> <span class="toc-text">五、添加谷歌sitemap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、备份以在不同环境下随时更新博客"><span class="toc-number">1.6.</span> <span class="toc-text">六、备份以在不同环境下随时更新博客</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#写在后面"><span class="toc-number">1.7.</span> <span class="toc-text">写在后面</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/blog/categories/博客/" title="博客">博客<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/blog/tags/gulp/" title="gulp">gulp<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/javascript/" title="javascript">javascript<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/js模板引擎/" title="js模板引擎">js模板引擎<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/github-hexo搭建个人博客/" title="github+hexo搭建个人博客">github+hexo搭建个人博客<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/随笔/" title="随笔">随笔<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://github.com/samstar" target="_blank" title="偶滴github">github</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://samstar.github.io" target="_blank" title="偶滴主页">Zuimao&#39;s Page</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="blog/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=5772953574&verifier=76416d04&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Zuimao. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/5772953574" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/samstar" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/dan-er-ge-39" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:shanerge007@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/blog/about" target="_blank" title="醉倒的猫">醉倒的猫</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.0.3.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"zuimao"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/blog/img/scrollup.png"/></a>
+	</div>
+	<script src="/blog/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

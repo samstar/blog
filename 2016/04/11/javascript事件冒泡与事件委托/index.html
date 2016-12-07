@@ -1,0 +1,524 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>javascript事件冒泡与事件委托 | zuimao&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="醉倒的猫">
+    
+
+    
+    <meta name="description" content="事件冒泡机制事件开始时由最具体的元素接收，然后逐级向上传播到较为不具体的节点 – js高级教程现代浏览器会将事件一直冒泡到window对象以如下结构为例1234&amp;lt;html&amp;gt;    &amp;lt;body&amp;gt;        &amp;lt;div&amp;gt;            &amp;lt;span id=&quot;btn&quot;&amp;gt;
+在span标签绑定click事件，则点击span元素时，事件会沿着DOM树向上">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript事件冒泡与事件委托">
+<meta property="og:url" content="http://www.easyzhidao.com/blog/2016/04/11/javascript事件冒泡与事件委托/index.html">
+<meta property="og:site_name" content="zuimao's blog">
+<meta property="og:description" content="事件冒泡机制事件开始时由最具体的元素接收，然后逐级向上传播到较为不具体的节点 – js高级教程现代浏览器会将事件一直冒泡到window对象以如下结构为例1234&amp;lt;html&amp;gt;    &amp;lt;body&amp;gt;        &amp;lt;div&amp;gt;            &amp;lt;span id=&quot;btn&quot;&amp;gt;
+在span标签绑定click事件，则点击span元素时，事件会沿着DOM树向上">
+<meta property="og:updated_time" content="2016-12-07T08:54:47.558Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript事件冒泡与事件委托">
+<meta name="twitter:description" content="事件冒泡机制事件开始时由最具体的元素接收，然后逐级向上传播到较为不具体的节点 – js高级教程现代浏览器会将事件一直冒泡到window对象以如下结构为例1234&amp;lt;html&amp;gt;    &amp;lt;body&amp;gt;        &amp;lt;div&amp;gt;            &amp;lt;span id=&quot;btn&quot;&amp;gt;
+在span标签绑定click事件，则点击span元素时，事件会沿着DOM树向上">
+
+    
+    <link rel="alternative" href="blog/atom.xml" title="zuimao&#39;s blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/blog/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.png" alt="zuimao&#39;s blog" title="zuimao&#39;s blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="zuimao&#39;s blog">zuimao&#39;s blog</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/blog/">Home</a></li>
+					
+						<li><a href="/blog/archives">Archives</a></li>
+					
+						<li><a href="/blog/demos">demos</a></li>
+					
+						<li><a href="/blog/about">About</a></li>
+					
+						<li><a href="/blog/book">book</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:www.easyzhidao.com/blog">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2016/04/11/javascript事件冒泡与事件委托/" title="javascript事件冒泡与事件委托" itemprop="url">javascript事件冒泡与事件委托</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/blog/about" title="醉倒的猫" target="_blank" itemprop="author">醉倒的猫</a>
+		
+  <p class="article-time">
+    <time datetime="2016-04-11T10:38:58.000Z" itemprop="datePublished"> Published 2016-04-11</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#事件冒泡机制"><span class="toc-number">1.</span> <span class="toc-text">事件冒泡机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#阻止事件冒泡"><span class="toc-number">2.</span> <span class="toc-text">阻止事件冒泡</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DOM中的事件对象"><span class="toc-number">2.1.</span> <span class="toc-text">DOM中的事件对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#event-stopPropagation-阻止冒泡"><span class="toc-number">2.2.</span> <span class="toc-text">event.stopPropagation()阻止冒泡</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件委托"><span class="toc-number">3.</span> <span class="toc-text">事件委托</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="事件冒泡机制"><a href="#事件冒泡机制" class="headerlink" title="事件冒泡机制"></a>事件冒泡机制</h2><p>事件开始时由最具体的元素接收，然后逐级向上传播到较为不具体的节点 – js高级教程<br>现代浏览器会将事件一直冒泡到window对象<br>以如下结构为例<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"btn"</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>在span标签绑定click事件，则点击span元素时，事件会沿着DOM树向上传播，即<code>span</code> &gt; <code>div</code> &gt; <code>body</code> &gt; <code>html</code> &gt; <code>document</code></p>
+<pre><code>注意这里，window对象是一个顶层对象，代表浏览器中一个打开的窗口，而document是window的一个属性对象（本身是一个对象），为当前显示的文档
+</code></pre><h2 id="阻止事件冒泡"><a href="#阻止事件冒泡" class="headerlink" title="阻止事件冒泡"></a>阻止事件冒泡</h2><h3 id="DOM中的事件对象"><a href="#DOM中的事件对象" class="headerlink" title="DOM中的事件对象"></a>DOM中的事件对象</h3><p>支持DOM的浏览器会有一个event对象传入事件处理程序中。该event对象拥有<code>target</code>、<code>currentTarget</code>、<code>type</code>、<code>preventDefault()</code>、<code>stopPropagation()</code>等属性和方法。<br>注意<code>target</code>和<code>currentTarget</code>的不同。</p>
+<blockquote>
+<p>在事件处理程序内部，对象this始终等于currentTarget的值（注册事件的元素）<br>target值包含事件的实际目标</p>
+</blockquote>
+<p>下面两段代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</div><div class="line">btn.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);              <span class="comment">//btn                       </span></div><div class="line">    <span class="built_in">console</span>.log(e.currentTarget);   <span class="comment">//btn</span></div><div class="line">    <span class="built_in">console</span>.log(e.target);          <span class="comment">//btn （假设btn为底层节点，否则可能为btn的子节点）</span></div><div class="line">&#125;, <span class="literal">false</span>);</div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</div><div class="line"><span class="built_in">document</span>.body.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(e.target.id == <span class="string">"btn"</span>)&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);              <span class="comment">//body               </span></div><div class="line">        <span class="built_in">console</span>.log(e.currentTarget);   <span class="comment">//body</span></div><div class="line">        <span class="built_in">console</span>.log(e.target);          <span class="comment">//btn</span></div><div class="line">    &#125;</div><div class="line">&#125;, <span class="literal">false</span>);</div></pre></td></tr></table></figure>
+<h3 id="event-stopPropagation-阻止冒泡"><a href="#event-stopPropagation-阻止冒泡" class="headerlink" title="event.stopPropagation()阻止冒泡"></a>event.stopPropagation()阻止冒泡</h3><p>event事件的stopPropagation()方法的作用是<code>取消事件的进一步捕获或冒泡</code>。<br>这里，我们绑定事件的写法a.addEventListener(‘click’,function(){},<code>false</code>)。最后一个参数是布尔值，指定事件流类型，<code>true</code>代表捕获事件，<code>false</code>代表冒泡事件。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</div><div class="line"><span class="built_in">document</span>.body.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">    e.stopPropagation(); </div><div class="line">&#125;, <span class="literal">false</span>);</div></pre></td></tr></table></figure></p>
+<p>调用event对象的该方法后，btn触发click事件，click事件不会沿DOM树进行冒泡了，也就是说，即使在btn的父节点或祖先节点注册了click事件，也不会触发。</p>
+<h2 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h2><p>事件委托利用事件冒泡机制，指定一个事件处理程序，就可以管理同一类型多个事件。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</div><div class="line"><span class="built_in">document</span>.body.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">    e.stopPropagation();            <span class="comment">//会生效吗？</span></div><div class="line">    <span class="keyword">if</span>(e.target.id == <span class="string">"btn"</span>)&#123;</div><div class="line">        <span class="keyword">do</span> something...         </div><div class="line">    &#125;</div><div class="line">&#125;, <span class="literal">false</span>);</div></pre></td></tr></table></figure></p>
+<p>原理就是，当被委托的元素上的事件（即此处document.body）触发时，判断e.target执行。点击btn后，并没有触发任何事件，而是click事件从btn向上一层层冒泡上去，沿途触发各个元素上的事件处理函数，冒泡到doucment.body时，才触发该事件处理函数，执行e.target判断，进而执行目标代码。<br>所以，代码中的e.stopPropagation()在事件从btn冒泡至body才会执行，执行的结果<code>仅仅是阻止事件由body进一步向上冒泡</code>。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>事件委托中的阻止冒泡，阻止的是从被委托元素向上的冒泡。也就是事件处理函数中e.currentTarget或者是this向上的冒泡。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/javascript/">javascript</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://www.easyzhidao.com/blog/blog/2016/04/11/javascript事件冒泡与事件委托/" data-title="javascript事件冒泡与事件委托 | zuimao&#39;s blog" data-tsina="5772953574" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/blog/2016/04/19/building-width-gulp/" title="building width gulp ">
+  <strong>上一篇：</strong><br/>
+  <span>
+  building width gulp </span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/blog/2016/03/18/记一随笔/"  title="记一随笔">
+ <strong>下一篇：</strong><br/> 
+ <span>记一随笔
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/04/11/javascript事件冒泡与事件委托/" data-title="javascript事件冒泡与事件委托" data-url="http://www.easyzhidao.com/blog/blog/2016/04/11/javascript事件冒泡与事件委托/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#事件冒泡机制"><span class="toc-number">1.</span> <span class="toc-text">事件冒泡机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#阻止事件冒泡"><span class="toc-number">2.</span> <span class="toc-text">阻止事件冒泡</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DOM中的事件对象"><span class="toc-number">2.1.</span> <span class="toc-text">DOM中的事件对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#event-stopPropagation-阻止冒泡"><span class="toc-number">2.2.</span> <span class="toc-text">event.stopPropagation()阻止冒泡</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件委托"><span class="toc-number">3.</span> <span class="toc-text">事件委托</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/blog/categories/博客/" title="博客">博客<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/blog/tags/gulp/" title="gulp">gulp<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/javascript/" title="javascript">javascript<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/js模板引擎/" title="js模板引擎">js模板引擎<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/github-hexo搭建个人博客/" title="github+hexo搭建个人博客">github+hexo搭建个人博客<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/blog/tags/随笔/" title="随笔">随笔<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://github.com/samstar" target="_blank" title="偶滴github">github</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://samstar.github.io" target="_blank" title="偶滴主页">Zuimao&#39;s Page</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="blog/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=5772953574&verifier=76416d04&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Zuimao. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/5772953574" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/samstar" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/dan-er-ge-39" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:shanerge007@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/blog/about" target="_blank" title="醉倒的猫">醉倒的猫</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.0.3.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"zuimao"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/blog/img/scrollup.png"/></a>
+	</div>
+	<script src="/blog/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
